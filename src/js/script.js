@@ -16,20 +16,6 @@ const templates = {
 bookTemplate: Handlebars.compile(document.querySelector(select.templateOf.bookTemplate).innerHTML),
 };
 
-/*let favoriteBooks = [];
-let filters = [];
-
-function renderBooks(){
-
-    for(let bookData in dataSource.books){
-        const generatedHTML = templates.bookTemplate(dataSource.books[bookData]);
-        let bookElement = utils.createDOMFromHTML(generatedHTML);
-
-        const bookContainer = document.querySelector(select.containerOf.bookList);
-        bookContainer.appendChild(bookElement);
-    }
-}*/
-
 class BooksList {
     constructor() {
         const thisBookList = this;
@@ -133,74 +119,5 @@ class BooksList {
         ratingContainer.style.cssText = ratingStyle;
     }
 }
-
-/*function initActions() {
-
-    const bookContainer = document.querySelectorAll('a.book__image');
-
-    for (let i = 0; i < bookContainer.length; i++){
-        bookContainer[i].addEventListener('dblclick', function(event){
-            event.preventDefault();
-            let bookID = bookContainer[i].getAttribute('data-id');
-
-            if (!favoriteBooks.includes(bookID)){
-                favoriteBooks.push(bookID);
-                bookContainer[i].classList.add('favorite');
-            } else {
-                favoriteBooks.pop(bookID);
-                bookContainer[i].classList.remove('favorite');
-            }
-        console.log('favoriteBooks', favoriteBooks);
-        });
-    }
-
-    document.querySelector('.filters').addEventListener("click", function(event){
-
-        if(event.target.getAttribute('type') == "checkbox") {
-            if(event.target.checked) {
-                console.log('checked');
-                filters.push(event.target.getAttribute('value'));
-            } else{
-                filters.splice(filters.indexOf(event.target.getAttribute('value')),1);
-                console.log('unchecked');
-            }
-            console.log('filters', event.target.getAttribute('value'));
-            console.log(event.target);
-        }
-        console.log('filters', filters);
-        //event.preventDefault();
-        filterBooks();
-    });
-}
-
-
-function filterBooks(){
-    for(let bookData of dataSource.books){
-        const generatedHTML = templates.bookTemplate(dataSource.books[bookData]);
-        let shouldBeHidden = false;
-
-        for(let f of filters){
-            console.log('f', f);
-            console.log('book',bookData.details);
-            if(!bookData.details[f]){
-                shouldBeHidden = true;
-                break;
-            }
-        }
-        const bookContainer = document.querySelectorAll('a.book__image');
-        for (let i = 0; i < bookContainer.length; i++){
-            if(bookContainer[i].getAttribute('data-id') == bookData.id){
-                if(shouldBeHidden){
-                    bookContainer[i].classList.add('hidden');
-                } else{
-                    bookContainer[i].classList.remove('hidden');
-                }
-            }
-        }
-    }
-}
-
-renderBooks();
-initActions();*/
 
 const app = new BooksList();
